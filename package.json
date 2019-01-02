@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "g": "./node_modules/.bin/gulp",
-    "start": "yarn g serve"
+    "start": "npm run g serve"
   },
   "author": "",
   "license": "ISC",
