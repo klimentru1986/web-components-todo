@@ -50,16 +50,30 @@
   `;
 
   class AddTodo extends HTMLElement {
+    static get observedAttributes() {
+      return ['value'];
+    }
+
     constructor() {
       super();
 
       this.attachShadow({ mode: 'open' });
       this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-      const button = this.shadowRoot.querySelector('button');
-      button.addEventListener('click', () => {
-        this.dispatchEvent(new CustomEvent('addTodo'));
-      });
+      this._input = this.shadowRoot.querySelector('input');
+      this._button = this.shadowRoot.querySelector('button');
+
+      this._button.addEventListener('click', () =>
+        this.dispatchEvent(new CustomEvent('addTodo'))
+      );
+    }
+
+    get value() {
+      return this._input.value;
+    }
+
+    set value(val) {
+      this._input.value = val;
     }
   }
 
