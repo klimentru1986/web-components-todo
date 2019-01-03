@@ -2,7 +2,7 @@
   const MOCK_TODOS = [
     { id: 1, name: 'Выучить Vue', completed: false },
     { id: 2, name: 'Выучить React', completed: false },
-    { id: 3, name: 'Выучить Angular', completed: false },
+    { id: 3, name: 'Выучить Angular', completed: true },
     { id: 4, name: 'Выучить Web Components', completed: false }
   ];
 
@@ -14,6 +14,7 @@
 
       this._addTodoEventListener();
       this._deleteTodoEventListener();
+      this._toggleCompleted();
 
       this._renderTodoList();
     }
@@ -37,10 +38,19 @@
       });
     }
 
+    _toggleCompleted() {
+      this._todoList.addEventListener('toggleCompleted', ev => {
+        const element = ev.target;
+        const todo = this._todos.find(td => td.id === +element.id);
+        todo.completed = !todo.completed;
+        element.setAttribute('completed', todo.completed);
+      });
+    }
+
     _deleteTodoEventListener() {
       this._todoList.addEventListener('deleteTodo', ev => {
         const element = ev.target;
-        this._todos = this._todos.filter(td => td.id !== element.id);
+        this._todos = this._todos.filter(td => td.id !== +element.id);
         this._todoList.removeChild(element);
       });
     }
