@@ -1,7 +1,14 @@
 (function() {
+  const MOCK_TODOS = [
+    { id: 1, name: 'Выучить Vue', completed: false },
+    { id: 2, name: 'Выучить React', completed: false },
+    { id: 3, name: 'Выучить Angular', completed: false },
+    { id: 4, name: 'Выучить Web Components', completed: false }
+  ];
+
   class ToDoApp {
     constructor() {
-      this._todos = [{ id: 1, name: 'test', completed: false }];
+      this._todos = [...MOCK_TODOS];
       this._addTodo = document.querySelector('#add-todo');
       this._todoList = document.querySelector('#todo-list');
 
@@ -40,7 +47,7 @@
 
     _renderTodoList() {
       const todos = this._todos.map(td => this._mapTodoToElement(td));
-      this._todoList.innerHTML = todos.join('');
+      this._todoList.innerHTML = [...todos].reverse().join('');
     }
 
     _mapTodoToElement(todo) {

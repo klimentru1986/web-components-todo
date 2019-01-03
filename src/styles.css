@@ -24,3 +24,8 @@ body {
   padding: 20px 30px;
   box-sizing: border-box;
 }
+
+.title {
+  margin: 0;
+  font-size: 26px;
+}
