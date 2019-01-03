@@ -23,30 +23,10 @@
         border-bottom: 1px solid #3F51B5;
     }
 
-    button {
-        background: #3F51B5;
-        color: white;
-        border: none;
-        font-size: 22px;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        box-shadow: 3px 3px 2px 0px rgba(50, 50, 50, 0.5);
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    button:hover {
-        box-shadow: none;
-    }
-
-    button:focus {
-        outline: none;
-    }
     </style>
     
     <input type="text"/>
-    <button>+</button>
+    <todo-button>+</todo-button>
   `;
 
   class AddTodo extends HTMLElement {
@@ -61,7 +41,7 @@
       this.shadowRoot.appendChild(template.content.cloneNode(true));
 
       this._input = this.shadowRoot.querySelector('input');
-      this._button = this.shadowRoot.querySelector('button');
+      this._button = this.shadowRoot.querySelector('todo-button');
 
       this._button.addEventListener('click', () =>
         this.dispatchEvent(new CustomEvent('addTodo'))
