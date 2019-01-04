@@ -9,7 +9,7 @@ const MOCK_TODOS = [
 
 class ToDoApp {
   constructor() {
-    this._todos = [...MOCK_TODOS];
+    this._todos = [...MOCK_TODOS].reverse();
     this._addTodo = document.querySelector('#add-todo');
     this._todoList = document.querySelector('#todo-list');
 
@@ -58,7 +58,7 @@ class ToDoApp {
 
   _renderTodoList() {
     const todos = this._todos.map(td => this._mapTodoToElement(td));
-    this._todoList.innerHTML = [...todos].reverse().join('');
+    this._todoList.innerHTML = [...todos].join('');
   }
 
   _mapTodoToElement(todo) {
