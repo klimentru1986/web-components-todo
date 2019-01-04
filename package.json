@@ -4,16 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack": "./node_modules/.bin/webpack",
-    "g": "./node_modules/.bin/gulp",
-    "start": "npm run g serve"
+    "serve": "./node_modules/.bin/webpack-dev-server",
+    "build": "./node_modules/.bin/webpack",
+    "buildProd": "./node_modules/.bin/webpack --mode=production"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.26.3",
-    "gulp": "^4.0.0",
+    "css-loader": "^2.1.0",
+    "extract-loader": "^3.1.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.0"
+    "webpack-cli": "^3.2.0",
+    "webpack-dev-server": "^3.1.14",
+    "html-webpack-plugin": "^3.2.0"
   }
 }
