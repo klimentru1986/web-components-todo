@@ -1,9 +1,8 @@
-import './styles.css';
 import { MOCK_TODOS } from './const/mockTodos';
 import { Todo } from './models/Todo';
 import { AddTodo } from './components/addTodo/addTodo';
 
-class ToDoApp {
+export class ToDoApp {
   private _todos: Todo[] = [...MOCK_TODOS].reverse();
   private _addTodo: AddTodo = document.querySelector('#add-todo');
   private _todoList = document.querySelector('#todo-list');
@@ -72,4 +71,3 @@ class ToDoApp {
   }
 }
 
-new ToDoApp();
