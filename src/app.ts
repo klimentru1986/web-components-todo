@@ -4,7 +4,7 @@ import { Todo } from './models/Todo';
 import { AddTodo } from './components/addTodo/addTodo';
 
 class ToDoApp {
-  private _todos: Todo[] = [...MOCK_TODOS];
+  private _todos: Todo[] = [...MOCK_TODOS].reverse();
   private _addTodo: AddTodo = document.querySelector('#add-todo');
   private _todoList = document.querySelector('#todo-list');
 
@@ -54,7 +54,7 @@ class ToDoApp {
 
   private _renderTodoList(): void {
     const todos = this._todos.map(td => this._mapTodoToElement(td));
-    this._todoList.innerHTML = [...todos].reverse().join('');
+    this._todoList.innerHTML = [...todos].join('');
   }
 
   private _mapTodoToElement(todo: Todo): string {
