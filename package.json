@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "webpack": "./node_modules/.bin/webpack",
     "g": "./node_modules/.bin/gulp",
     "start": "npm run g serve"
   },
@@ -11,6 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.3",
-    "gulp": "^4.0.0"
+    "gulp": "^4.0.0",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0"
   }
 }

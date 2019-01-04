@@ -1,6 +1,5 @@
-(function() {
-  const template = document.createElement('template');
-  template.innerHTML = `
+const template = document.createElement('template');
+template.innerHTML = `
     <style>
     button {
         background: #3F51B5;
@@ -27,14 +26,13 @@
     <button><slot></slot></button>
     `;
 
-  class TodoButton extends HTMLElement {
-    constructor() {
-      super();
+class TodoButton extends HTMLElement {
+  constructor() {
+    super();
 
-      this.attachShadow({ mode: 'open' });
-      this.shadowRoot.appendChild(template.content.cloneNode(true));
-    }
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
+}
 
-  customElements.define('todo-button', TodoButton);
-})();
+customElements.define('todo-button', TodoButton);
