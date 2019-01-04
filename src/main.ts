@@ -1,6 +1,7 @@
 import './styles.css';
 
-import { ToDoApp } from './app';
+import '@webcomponents/custom-elements';
 import './components';
+import { ToDoApp } from './app';
 
 new ToDoApp();
