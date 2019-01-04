@@ -1,3 +1,3 @@
-import * as todoButton from './todoButton';
-import * as todoItem from './todoItem';
-import * as addTodo from './addTodo';
+import * as todoButton from './todoButton/todoButton';
+import * as todoItem from './todoItem/todoItem';
+import * as addTodo from './addTodo/addTodo';

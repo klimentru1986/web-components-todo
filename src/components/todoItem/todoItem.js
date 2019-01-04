@@ -1,42 +1,7 @@
+import tmpl from './todoItem.html';
+
 const template = document.createElement('template');
-template.innerHTML = `
-  <style>
-  :host {
-      display: flex;
-      align-items: center;
-      margin: 5px 0;
-  }
-
-  .completed {
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 24px;
-  }
-
-  .completed:hover {
-    color: orange;
-  }
-
-  .name {
-      flex: 1;
-      font-size: 20px;
-      margin: 5px 10px;  
-  }
-
-  .completed.inactive {
-    color: green;
-  }
-
-  .name.inactive {
-    text-decoration: line-through;
-  }
-  </style>
-  <div class="completed">&#10003;</div>
-  <div class="name">
-    <slot></slot>
-  </div>
-  <todo-button>-</todo-button>
-  `;
+template.innerHTML = tmpl;
 
 class TodoItem extends HTMLElement {
   static get observedAttributes() {

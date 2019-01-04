@@ -1,0 +1,35 @@
+<style>
+  :host {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+
+  .completed {
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 24px;
+  }
+
+  .completed:hover {
+    color: orange;
+  }
+
+  .name {
+    flex: 1;
+    font-size: 20px;
+    margin: 5px 10px;
+  }
+
+  .completed.inactive {
+    color: green;
+  }
+
+  .name.inactive {
+    text-decoration: line-through;
+  }
+</style>
+
+<div class="completed">&#10003;</div>
+<div class="name"><slot></slot></div>
+<todo-button>-</todo-button>
