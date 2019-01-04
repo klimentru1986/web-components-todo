@@ -9,7 +9,7 @@ const MOCK_TODOS = [
 
 class ToDoApp {
   constructor() {
-    this._todos = [...MOCK_TODOS].reverse();
+    this._todos = [...MOCK_TODOS];
     this._addTodo = document.querySelector('#add-todo');
     this._todoList = document.querySelector('#todo-list');
 
