@@ -3,8 +3,11 @@ import tmpl from './addTodo.html';
 const template = document.createElement('template');
 template.innerHTML = tmpl;
 
-class AddTodo extends HTMLElement {
-  static get observedAttributes() {
+export class AddTodo extends HTMLElement {
+  private _input: HTMLInputElement;
+  private _button: HTMLElement;
+
+  public static get observedAttributes() {
     return ['value'];
   }
 

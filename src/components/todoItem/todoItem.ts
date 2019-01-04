@@ -3,8 +3,12 @@ import tmpl from './todoItem.html';
 const template = document.createElement('template');
 template.innerHTML = tmpl;
 
-class TodoItem extends HTMLElement {
-  static get observedAttributes() {
+export class TodoItem extends HTMLElement {
+  private _completed: HTMLElement;
+  private _name: HTMLElement;
+  private _button: HTMLElement;
+
+  public static get observedAttributes() {
     return ['completed'];
   }
 
@@ -22,7 +26,11 @@ class TodoItem extends HTMLElement {
     this._addCompletedClickEvent();
   }
 
-  attributeChangedCallback(attrName, oldVal, newVal) {
+  public attributeChangedCallback(
+    attrName: string,
+    oldVal: string,
+    newVal: string
+  ): void {
     if (attrName === 'completed') {
       if (newVal === 'true') {
         this._completed.classList.add('inactive');
@@ -34,13 +42,13 @@ class TodoItem extends HTMLElement {
     }
   }
 
-  _addButtonClickEvent() {
+  private _addButtonClickEvent(): void {
     this._button.addEventListener('click', ev =>
       this.dispatchEvent(new CustomEvent('deleteTodo', { bubbles: true }))
     );
   }
 
-  _addCompletedClickEvent() {
+  private _addCompletedClickEvent(): void {
     this._completed.addEventListener('click', ev =>
       this.dispatchEvent(new CustomEvent('toggleCompleted', { bubbles: true }))
     );

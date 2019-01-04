@@ -4,16 +4,22 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/app.js',
-    components: './src/components/components.js'
+    app: './src/app.ts',
+    components: './src/components/components.ts'
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
   mode: 'development',
+  devtool: 'inline-source-map',
   module: {
     rules: [
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.html$/,
         use: [
@@ -32,6 +38,9 @@ module.exports = {
         use: ExtractTextPlugin.extract({ use: ['css-loader'] })
       }
     ]
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new HtmlWebpackPlugin({

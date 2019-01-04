@@ -1,18 +1,14 @@
 import './styles.css';
-
-const MOCK_TODOS = [
-  { id: 1, name: 'Выучить Vue', completed: false },
-  { id: 2, name: 'Выучить React', completed: false },
-  { id: 3, name: 'Выучить Angular', completed: true },
-  { id: 4, name: 'Выучить Web Components', completed: false }
-];
+import { MOCK_TODOS } from './const/mockTodos';
+import { Todo } from './models/Todo';
+import { AddTodo } from './components/addTodo/addTodo';
 
 class ToDoApp {
-  constructor() {
-    this._todos = [...MOCK_TODOS];
-    this._addTodo = document.querySelector('#add-todo');
-    this._todoList = document.querySelector('#todo-list');
+  private _todos: Todo[] = [...MOCK_TODOS];
+  private _addTodo: AddTodo = document.querySelector('#add-todo');
+  private _todoList = document.querySelector('#todo-list');
 
+  constructor() {
     this._addTodoEventListener();
     this._deleteTodoEventListener();
     this._toggleCompleted();
@@ -41,27 +37,27 @@ class ToDoApp {
 
   _toggleCompleted() {
     this._todoList.addEventListener('toggleCompleted', ev => {
-      const element = ev.target;
-      const todo = this._todos.find(td => td.id === +element.id);
+      const element = <HTMLElement>ev.target;
+      const todo = this._todos.find((td: Todo) => td.id === +element.id);
       todo.completed = !todo.completed;
-      element.setAttribute('completed', todo.completed);
+      element.setAttribute('completed', `${todo.completed}`);
     });
   }
 
-  _deleteTodoEventListener() {
+  private _deleteTodoEventListener(): void {
     this._todoList.addEventListener('deleteTodo', ev => {
-      const element = ev.target;
+      const element = <HTMLElement>ev.target;
       this._todos = this._todos.filter(td => td.id !== +element.id);
       this._todoList.removeChild(element);
     });
   }
 
-  _renderTodoList() {
+  private _renderTodoList(): void {
     const todos = this._todos.map(td => this._mapTodoToElement(td));
     this._todoList.innerHTML = [...todos].reverse().join('');
   }
 
-  _mapTodoToElement(todo) {
+  private _mapTodoToElement(todo: Todo): string {
     return `<todo-item id="${todo.id}" 
             name="${todo.name}" 
             completed="${todo.completed}">
@@ -69,7 +65,7 @@ class ToDoApp {
           </todo-item>`;
   }
 
-  _getTodoId() {
+  private _getTodoId(): number {
     const id = this._todos[0] ? this._todos[0].id : 0;
 
     return id + 1;

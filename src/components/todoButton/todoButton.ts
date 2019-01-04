@@ -3,7 +3,7 @@ import tmpl from './todoButton.html';
 const template = document.createElement('template');
 template.innerHTML = tmpl;
 
-class TodoButton extends HTMLElement {
+export class TodoButton extends HTMLElement {
   constructor() {
     super();
 
